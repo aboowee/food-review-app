@@ -1,0 +1,29 @@
+{
+  "name": "rpp2210-mvp",
+  "version": "1.0.0",
+  "description": "An app that determines your favorite restaurants and recommendations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aboowee/rpp2210-mvp.git"
+  },
+  "author": "Anthony Bui",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aboowee/rpp2210-mvp/issues"
+  },
+  "homepage": "https://github.com/aboowee/rpp2210-mvp#readme",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "jquery": "^3.6.3",
+    "mongodb": "^5.0.0",
+    "mongoose": "^6.9.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
