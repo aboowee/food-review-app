@@ -49,4 +49,4 @@ Once the project moves into development, the press release can be used as a touc
   > "My wife and I are extremely indecisive. Thank you Restaurant Target for telling us how much we go to Red Lobster. I guess we'll get Red Lobster."
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Wrap it up and give pointers where the reader should go next
