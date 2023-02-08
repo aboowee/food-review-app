@@ -1,13 +1,18 @@
 import React from "react";
-import ReactDom from "react-dom";
+import FoodInput from "./components/FoodInput.jsx";
+import FoodList from "./components/FoodList.jsx";
+import { createRoot } from 'react-dom/client';
 
 const App = () => {
   return (
     <div>
-      <h1>hello world</h1>
-      <div>this is a test</div>
+      <h1>WELCOME TO YOUR NEXT MEAL!</h1>
+      <FoodInput />
+      <FoodList />
     </div>
   )
 }
 
-ReactDom.render(<App />, document.getElementById('root'))
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App />);
