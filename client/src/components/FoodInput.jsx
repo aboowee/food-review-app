@@ -33,17 +33,17 @@ const FoodInput = ( {onSubmit} ) => {
       <div>
         Select Your Food Type:  <select id="foodType" name="foodType">
           <option>American</option>
-          <option>Chinese</option>
-          <option>Mexican</option>
-          <option>Italian</option>
-          <option>Japanese</option>
-          <option>BBQ</option>
           <option>Bakery</option>
+          <option>BBQ</option>
+          <option>Chinese</option>
           <option>Dessert</option>
           <option>Ice Cream</option>
+          <option>Italian</option>
+          <option>Japanese</option>
+          <option>Mexican</option>
           <option>Middle Eastern</option>
-          <option>Thai</option>
           <option>Puerto Rican</option>
+          <option>Thai</option>
         </select>
       </div>
       <button onClick={onSubmit}> Insert Experience </button>

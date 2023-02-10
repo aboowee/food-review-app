@@ -1,8 +1,6 @@
 const {findRestaurant: findRestaurant} = require ('../database/index');
 const {addRestaurant: addRestaurant} = require ('../database/index');
-
-
-
+const {updateRestaurant: updateRestaurant} = require ('../database/index');
 const express = require('express');
 const path = require('path');
 
@@ -14,17 +12,20 @@ app.use(express.static(path.join(__dirname,'../client/dist')))
 app.use(express.json());
 
 app.post('/restaurant', (req, res) => {
-  console.log(req.body);
-  findRestaurant({restaurant: req.body.username})
+  findRestaurant({restaurant: req.body.name})
   .then((data) => {
-    if (data) {
-
+    if (data.length) {
+      data.newRating = Number(req.body.rating);
+      updateRestaurant(data);
     } else {
-      return addRestaurant(req.body);
+      addRestaurant(req.body);
     }
   })
   .then(()=>{res.sendStatus(200)})
-  .catch(()=>{res.sendStatus(500)});
+  .catch((err)=>{
+    console.log('This is the error:  ', err)
+    res.sendStatus(500);
+  });
 });
 
 app.get('/restaurant', (req, res) => {
