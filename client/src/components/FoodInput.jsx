@@ -1,9 +1,10 @@
 import React from "react";
+import $ from 'jquery';
 
-const FoodInput = () => {
+const FoodInput = ( {onSubmit} ) => {
   return (
-    <form>
-      <div>Insert Restaurant Here:  <input type="text"></input></div>
+    <div>
+      <div>Insert Restaurant Here:  <input type="text" id="restaurantName"></input></div>
       <div>
         <fieldset>
           <legend>Rate Your Experience:</legend>
@@ -45,8 +46,8 @@ const FoodInput = () => {
           <option>Puerto Rican</option>
         </select>
       </div>
-      <div><button> Insert Experience </button></div>
-    </form>
+      <button onClick={onSubmit}> Insert Experience </button>
+    </div>
   )
 }
 
