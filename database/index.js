@@ -22,17 +22,23 @@ const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 const Genre = mongoose.model('Genre', foodTypeSchema);
 
 const findRestaurant = (input = {}) => {
-  console.log(input);
   return Restaurant.find(input);
 };
 
+const sortRestaurant = (sortParam) => {
+  if (sortParam === "visits") {
+    return Restaurant.find({}).sort({visits: 1})
+  } else if (sortParam === "rating") {
+    return Restaurant.find({}).sort({rating: 1})
+  }
+}
+
 const updateRestaurant = async (restaurantInDB) => {
-  console.log(restaurantInDB);
 
   let newReview = (restaurantInDB[0].rating * restaurantInDB[0].visits + restaurantInDB.newRating) / (restaurantInDB[0].visits + 1);
-  console.log(newReview);
+
   let newVisit = restaurantInDB[0].visits + 1;
-  console.log(newVisit);
+
   await Restaurant.updateOne({restaurant: restaurantInDB[0].restaurant}, {$set: {visits: newVisit, rating: newReview}});
 }
 
@@ -43,3 +49,4 @@ const addRestaurant = (restaurantInfo) => (
 module.exports.findRestaurant = findRestaurant;
 module.exports.addRestaurant = addRestaurant;
 module.exports.updateRestaurant = updateRestaurant;
+module.exports.sortRestaurant = sortRestaurant;

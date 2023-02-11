@@ -10,14 +10,20 @@ const { useState, useEffect } = React;
 
 const [restaurants, setRestaurant] = useState([]);
 
-const getList = () => {
+const sort = (sortParam) => {
+  let sortedRestaurants = restaurants.slice().sort((a,b) => {
+    return a[sortParam] - b[sortParam];
+  })
+  setRestaurant(sortedRestaurants);
+}
+
+const getList = (url) => {
 
   $.ajax({
     method: 'GET',
-    url: '/restaurant',
+    url: url,
     dataType: 'json',
     success: (data) => {
-      console.log(data, 'THIS DATA');
       setRestaurant(data);
     },
     error: (error) => {
@@ -31,7 +37,7 @@ const insertReview = () => {
   let insertData = {};
   insertData.rating = $('input[name="rating"]:checked').val();
   insertData.foodType = $('#foodType').find(":selected").val();
-  insertData.name = $('#restaurantName').val();
+  insertData.name = $('#restaurantInput').val().toUpperCase();
   let restaurantForm = JSON.stringify(insertData);
 
   $.ajax({
@@ -41,7 +47,7 @@ const insertReview = () => {
     data: restaurantForm,
     success: () => {
       console.log('Input submitted');
-      getList();
+      getList('/restaurant');
     },
     error: (error) => {
       console.log('Could not submit: ', error);
@@ -61,7 +67,7 @@ useEffect(() => {
     <div>
       <h1>WELCOME TO YOUR NEXT MEAL!</h1>
       <FoodInput onSubmit={insertReview}/>
-      <FoodList restaurantsList={restaurants}/>
+      <FoodList restaurantsList={restaurants} onSubmit={getList} sorting={sort}/>
     </div>
   )
 }

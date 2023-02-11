@@ -1,6 +1,7 @@
 const {findRestaurant: findRestaurant} = require ('../database/index');
 const {addRestaurant: addRestaurant} = require ('../database/index');
 const {updateRestaurant: updateRestaurant} = require ('../database/index');
+const {sortRestaurant: sortRestaurant} = require ('../database/index');
 const express = require('express');
 const path = require('path');
 
@@ -35,6 +36,19 @@ app.get('/restaurant', (req, res) => {
   })
 });
 
+// app.get('/rating', (req, res) => {
+//   sortRestaurant('rating')
+//   .then((data) => {
+//     res.send(data);
+//   })
+// });
+
+// app.get('/visits', (req, res) => {
+//   sortRestaurant('visits')
+//   .then((data) => {
+//     res.send(data);
+//   })
+// });
 
 app.listen(port, () => {
   console.log(`listening to port ${port}`);

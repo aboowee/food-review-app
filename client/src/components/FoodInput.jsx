@@ -2,11 +2,24 @@ import React from "react";
 import $ from 'jquery';
 
 const FoodInput = ( {onSubmit} ) => {
+
+  const { useState } = React;
+
+  const [hasValues, setValue] = useState(false);
+
+  const inputChecker = () => {
+    if ($('#restaurantInput').val().length && $("input[type=radio][name=rating]:checked").val()) {
+      setValue(true);
+    } else {
+      setValue(false);
+    }
+  }
+
   return (
     <div>
-      <div>Insert Restaurant Here:  <input type="text" id="restaurantName"></input></div>
+      <div>Insert Restaurant Here:  <input type="text" id="restaurantInput" onChange={inputChecker}></input></div>
       <div>
-        <fieldset>
+        <fieldset onClick={inputChecker}>
           <legend>Rate Your Experience:</legend>
           <div>
             <input type="radio" name="rating" value="1"></input>
@@ -46,7 +59,7 @@ const FoodInput = ( {onSubmit} ) => {
           <option>Thai</option>
         </select>
       </div>
-      <button onClick={onSubmit}> Insert Experience </button>
+      <button onClick={onSubmit} disabled={!hasValues}> Insert Experience </button>
     </div>
   )
 }
