@@ -24,6 +24,7 @@ const getList = (url) => {
     url: url,
     dataType: 'json',
     success: (data) => {
+      console.log('here');
       setRestaurant(data);
     },
     error: (error) => {

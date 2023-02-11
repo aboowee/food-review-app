@@ -50,12 +50,12 @@ const FoodInput = ( {onSubmit} ) => {
           <option>BBQ</option>
           <option>Chinese</option>
           <option>Dessert</option>
-          <option>Ice Cream</option>
+          <option>French</option>
           <option>Italian</option>
           <option>Japanese</option>
+          <option>Mediterranean</option>
           <option>Mexican</option>
-          <option>Middle Eastern</option>
-          <option>Puerto Rican</option>
+          <option>Seafood</option>
           <option>Thai</option>
         </select>
       </div>

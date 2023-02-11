@@ -25,13 +25,13 @@ const findRestaurant = (input = {}) => {
   return Restaurant.find(input);
 };
 
-const sortRestaurant = (sortParam) => {
-  if (sortParam === "visits") {
-    return Restaurant.find({}).sort({visits: 1})
-  } else if (sortParam === "rating") {
-    return Restaurant.find({}).sort({rating: 1})
-  }
-}
+// const sortRestaurant = (sortParam) => {
+//   if (sortParam === "visits") {
+//     return Restaurant.find({}).sort({visits: 1})
+//   } else if (sortParam === "rating") {
+//     return Restaurant.find({}).sort({rating: 1})
+//   }
+// }
 
 const updateRestaurant = async (restaurantInDB) => {
 
@@ -42,11 +42,11 @@ const updateRestaurant = async (restaurantInDB) => {
   await Restaurant.updateOne({restaurant: restaurantInDB[0].restaurant}, {$set: {visits: newVisit, rating: newReview}});
 }
 
-const addRestaurant = (restaurantInfo) => (
-  Restaurant.create({restaurant: restaurantInfo.name, rating: restaurantInfo.rating, visits: 1, foodType: restaurantInfo.foodType})
-);
+const addRestaurant = async (restaurantInfo) => {
+  await Restaurant.create({restaurant: restaurantInfo.name, rating: restaurantInfo.rating, visits: 1, foodType: restaurantInfo.foodType})
+};
 
 module.exports.findRestaurant = findRestaurant;
 module.exports.addRestaurant = addRestaurant;
 module.exports.updateRestaurant = updateRestaurant;
-module.exports.sortRestaurant = sortRestaurant;
+// module.exports.sortRestaurant = sortRestaurant;
